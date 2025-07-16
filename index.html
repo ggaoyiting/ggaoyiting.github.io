@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Bettie's Pet Dress-up</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1>Bettie's website</h1>
+    <div class="pets">
+        <div class="pet">
+            <img class="pet-img toggle-img" 
+                 src="cat_static.png" 
+                 data-static="cat_static.png" 
+                 data-animate="cat_animate.gif" 
+                 alt="Cat 1" />
+            <button class="number-label" onclick="goWardrobe(1)">1</button>
+        </div>
+        <div class="pet">
+            <img class="pet-img toggle-img" 
+                 src="cat2_static.png" 
+                 data-static="cat2_static.png" 
+                 data-animate="cat2_animate.gif" 
+                 alt="Cat 2" />
+            <button class="number-label" onclick="goWardrobe(2)">2</button>
+        </div>
+        <div class="pet">
+            <img class="pet-img toggle-img" 
+                 src="dog_static.png" 
+                 data-static="dog_static.png" 
+                 data-animate="dog_animate.gif" 
+                 alt="Dog 1" />
+            <button class="number-label" onclick="goWardrobe(3)">3</button>
+        </div>
+        <div class="pet">
+            <img class="pet-img toggle-img" 
+                 src="dog2_static.png" 
+                 data-static="dog2_static.png" 
+                 data-animate="dog2_animate.gif" 
+                 alt="Dog 2" />
+            <button class="number-label" onclick="goWardrobe(4)">4</button>
+        </div>
+    </div>
+    <div class="choose-text">Choose your role</div>
+
+    <script>
+        // 图片静态/动态切换
+        document.querySelectorAll('.toggle-img').forEach(img => {
+            img.addEventListener('click', () => {
+                const currentSrc = img.getAttribute('src');
+                const staticSrc = img.getAttribute('data-static');
+                const animateSrc = img.getAttribute('data-animate');
+                img.setAttribute('src', currentSrc === staticSrc ? animateSrc : staticSrc);
+            });
+        });
+
+        // 跳转换装页面
+        function goWardrobe(num) {
+            window.location.href = "wardrobe.html?pet=" + num;
+        }
+    </script>
+</body>
+</html>
